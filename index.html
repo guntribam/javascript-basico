@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meu Tutorial JavaScript</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/dracula.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.11/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.11/mode/javascript/javascript.min.js"></script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            font-size: 20px;
+            line-height: 1.45;
+            color: black;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 50em;
+            padding: 2em 1em 5em;
+            position: relative;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Tutorial JavaScript</h1>
+
+        <h2>1: Rodando seu código</h2>
+        <textarea id="codeEditor-1" data-size="100">
+// Aperte F12 para ver o console e o coloque na lateral direita
+console.log("hello World"); // assim que imprimimos no console
+        </textarea>
+        <div id="output-1"></div>
+        <button id="runButton-1">Rodar</button>
+        <button id="resetButton-1">Voltar ao original</button>
+
+        <h2>2: Variáveis e tipos de dados</h2>
+        <textarea id="codeEditor-2" data-size="650">
+/*
+Tipos de dados:
+undefined, null, boolean, string, symbol, number, object
+*/
+
+var meuNome = "Gunter"
+
+console.log(meuNome)
+
+meuNome = 35
+
+console.log(meuNome)
+
+let sobrenome = 'Amorim'
+
+const pi = 3.14
+
+//Altere o valor da variável 'sobrenome' e mostre no console
+
+
+//Agora altere o valor da variável 'pi' e mostre no console
+        </textarea>
+        <div id="output-2"></div>
+        <button id="runButton-2">Rodar</button>
+        <button id="resetButton-2">Voltar ao original</button>
+
+
+
+        <h2>3: Inicialização de variáveis e aritmética básica</h2>
+        <textarea id="codeEditor-3" data-size="400">
+//tente imprimir o valor de a, b e c
+
+var a //= 5
+var b //= 10
+var c //= "eu sou um "
+//console.log(a, b, c)
+
+// Depois imprima novamente depois das 3 linhas a seguir
+
+a = a + 1
+b += 5
+c = c + "texto"
+        </textarea>
+        <div id="output-3"></div>
+        <button id="runButton-3">Rodar</button>
+        <button id="resetButton-3">Voltar ao original</button>
+    </main>
+    <script>
+        function createCodeZone(id) {
+            const textArea = document.getElementById(`codeEditor-${id}`);
+            const codeEditor = CodeMirror.fromTextArea(textArea, {
+                mode: "javascript",
+                theme: "dracula",
+                lineNumbers: true,
+                viewportMargin: Infinity, // Para manter todas as linhas visíveis
+            });
+
+            // Configurar o número de linhas visíveis
+            codeEditor.setSize(null, textArea.dataset.size); // Altere 100 para o número desejado de linhas visíveis
+
+            const runButton = document.getElementById(`runButton-${id}`);
+            const resetButton = document.getElementById(`resetButton-${id}`);
+            const output = document.getElementById(`output-${id}`);
+
+            const initialCode = textArea.value;
+
+            runButton.addEventListener("click", () => {
+                output.innerHTML = "";
+                try {
+                    const code = codeEditor.getValue();
+                    eval(code);
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+
+            resetButton.addEventListener("click", () => {
+                codeEditor.setValue(initialCode);
+                output.innerHTML = "";
+            });
+        }
+
+        function createZones(){
+            let cont = 1;
+            while(document.getElementById(`codeEditor-${cont}`) !== null){
+                createCodeZone(cont);
+                cont++;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", createZones);
+    </script>
+
+</body>
+
+</html>
