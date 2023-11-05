@@ -25,7 +25,7 @@
 
         main {
             margin: 0 auto;
-            max-width: 50em;
+            max-width: 55em;
             padding: 2em 1em 5em;
             position: relative;
             overflow-wrap: break-word;
@@ -36,135 +36,11 @@
 <body>
     <main>
         <h1>Tutorial JavaScript</h1>
+        <article id="sections">
 
-        <h2>1: Rodando seu código</h2>
-        <textarea id="codeEditor-1" data-size="100">
-// Aperte F12 para ver o console e o coloque na lateral direita
-console.log("hello World"); // assim que imprimimos no console
-        </textarea>
-        <div id="output-1"></div>
-        <button id="runButton-1">Rodar</button>
-        <button id="resetButton-1">Voltar ao original</button>
-
-        <h2>2: Tipos de dados e Variáveis</h2>
-        <textarea id="codeEditor-2" data-size="650">
-/*
-Tipos de dados:
-undefined, null, boolean, string, symbol, number, object
-*/
-
-var meuNome = "Gunter"
-
-console.log(meuNome)
-
-meuNome = 35
-
-console.log(meuNome)
-
-let sobrenome = 'Amorim'
-
-const pi = 3.14
-
-//Altere o valor da variável 'sobrenome' e mostre no console
-
-
-//Agora altere o valor da variável 'pi' e mostre no console
-        </textarea>
-        <div id="output-2"></div>
-        <button id="runButton-2">Rodar</button>
-        <button id="resetButton-2">Voltar ao original</button>
-
-
-
-        <h2>3: Inicialização de variáveis e aritmética básica</h2>
-        <textarea id="codeEditor-3" data-size="950">
-//tente imprimir o valor de a, b e c
-
-var a //= 5
-var b //= 10
-var c //= "eu sou um "
-//console.log(a, b, c)
-
-// Imprima novamente depois das 3 linhas a seguir
-
-a = a + 1
-b += 5
-c = c + "texto"
-//console.log(a, b, c)
-
-//Soma
-console.log( a + 25 )
-
-//Subtração
-console.log( b - 25 )
-
-//Multiplicação
-const pi = 3.14
-console.log( pi * 100 )
-
-//Divisão
-const denominador = 3
-console.log( 9 / denominador )
-console.log( 1 / denominador )
-
-//Resto
-console.log( 10 % denominador)
-
-        </textarea>
-        <div id="output-3"></div>
-        <button id="runButton-3">Rodar</button>
-        <button id="resetButton-3">Voltar ao original</button>
+        </article>
     </main>
-    <script>
-        function createCodeZone(id) {
-            const textArea = document.getElementById(`codeEditor-${id}`);
-            const codeEditor = CodeMirror.fromTextArea(textArea, {
-                mode: "javascript",
-                theme: "dracula",
-                lineNumbers: true,
-                viewportMargin: Infinity, 
-                extraKeys: {
-                    "Ctrl-Enter": executeCode,
-                    "Shift-Enter": () => console.clear()
-                }
-            });
-
-            codeEditor.setSize(null, textArea.dataset.size); 
-            const runButton = document.getElementById(`runButton-${id}`);
-            const resetButton = document.getElementById(`resetButton-${id}`);
-            const output = document.getElementById(`output-${id}`);
-            const initialCode = textArea.value;
-
-            function executeCode() {
-                output.innerHTML = "";
-                try {
-                    const code = codeEditor.getValue();
-                    eval(code);
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            
-
-            function resetCode() {
-                codeEditor.setValue(initialCode);
-                output.innerHTML = "";
-            }
-
-            runButton.addEventListener("click", executeCode);
-            resetButton.addEventListener("click", resetCode);
-        }
-
-        function createZones() {
-            let cont = 1;
-            while (document.getElementById(`codeEditor-${cont}`) !== null) {
-                createCodeZone(cont);
-                cont++;
-            }
-        }
-        document.addEventListener("DOMContentLoaded", createZones);
-    </script>
+    <script type="module" src="script.js"></script>
 
 </body>
 
