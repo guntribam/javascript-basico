@@ -1,94 +1,86 @@
 export default `
-<h2>9: Desafio</h2>
-<textarea id="codeEditor-9" data-size="2610">
-const novelas = [
-    {
-      nomeNovela: 'Laços de Família',
-      principaisAtores: ['Vera Fischer', 'Reynaldo Gianecchini', 'Tony Ramos'],
-      diretor: 'Jayme Monjardim',
-      horario: 'novela das 8',
-      musicaAbertura: 'Love by Grace',
-      artistaMusicaAbertura: 'Lara Fabian'
+<h2>9: Objects</h2>
+<textarea id="codeEditor-9" data-size="2400">
+//Objetos são, talvez, a principal estrutura em javascript
+//Eles são semelhantes às structs, porém podem guardar funções
+const pessoa = {
+    nome: "Gunter Amorim",
+    "profissão": "Professor",
+    idade: 35,
+    adivinhaSalario: function() {
+        if(this.profissao === "Professor"){
+            console.log(this.nome + " é um quebrado")
+        } else {
+            console.log(this.nome + " ainda tem chance de ganhar uma grana")
+        }
     },
-    {
-      nomeNovela: 'O Clone',
-      principaisAtores: ['Giovanna Antonelli', 'Murilo Benício', 'Dalton Vigh'],
-      diretor: 'Jayme Monjardim',
-      horario: 'novela das 9',
-      musicaAbertura: 'O Clone',
-      artistaMusicaAbertura: 'Ney Matogrosso'
-    },
-    {
-      nomeNovela: 'Por Amor',
-      principaisAtores: ['Regina Duarte', 'Fábio Assunção', 'Vivianne Pasmanter'],
-      diretor: 'Ricardo Waddington',
-      horario: 'novela das 8',
-      musicaAbertura: 'Canta, Canta, Minha Gente',
-      artistaMusicaAbertura: 'Martinho da Vila'
-    },
-    {
-      nomeNovela: 'O Beijo do Vampiro',
-      principaisAtores: ['Claudia Raia', 'Tarcísio Meira', 'Mariana Ximenes'],
-      diretor: 'Jorge Fernando',
-      horario: 'novela das 7',
-      musicaAbertura: 'Amor I Love You',
-      artistaMusicaAbertura: 'Marisa Monte'
-    },
-    {
-      nomeNovela: 'Senhora do Destino',
-      principaisAtores: ['Renata Sorrah', 'José Wilker', 'Susana Vieira'],
-      diretor: 'Wolf Maya',
-      horario: 'novela das 9',
-      musicaAbertura: 'Adeus, Mariana',
-      artistaMusicaAbertura: 'Gal Costa'
-    },
-    {
-      nomeNovela: 'Mulheres Apaixonadas',
-      principaisAtores: ['Christiane Torloni', 'José Mayer', 'Tony Ramos'],
-      diretor: 'Denise Saraceni',
-      horario: 'novela das 9',
-      musicaAbertura: 'Clube da Esquina Nº 2',
-      artistaMusicaAbertura: 'Milton Nascimento'
-    },
-    {
-      nomeNovela: 'Esperança',
-      principaisAtores: ['Priscila Fantin', 'Reynaldo Gianecchini', 'Raul Cortez'],
-      diretor: 'Luiz Fernando Carvalho',
-      horario: 'novela das 6',
-      musicaAbertura: 'A Primeira Vista',
-      artistaMusicaAbertura: 'Daniela Mercury'
-    },
-    {
-      nomeNovela: 'Chocolate com Pimenta',
-      principaisAtores: ['Mariana Ximenes', 'Murilo Benício', 'Elizabeth Savalla'],
-      diretor: 'Jorge Fernando',
-      horario: 'novela das 6',
-      musicaAbertura: 'Amor Perfeito',
-      artistaMusicaAbertura: 'Roberto Carlos'
-    },
-    {
-      nomeNovela: 'Sabor da Paixão',
-      principaisAtores: ['Cláudia Raia', 'Fábio Assunção', 'Mariana Ximenes'],
-      diretor: 'Jayme Monjardim',
-      horario: 'novela das 7',
-      musicaAbertura: 'De Repente Califórnia',
-      artistaMusicaAbertura: 'Lulu Santos'
-    },
-    {
-      nomeNovela: 'Desejos de Mulher',
-      principaisAtores: ['Regina Duarte', 'José Mayer', 'Glória Pires'],
-      diretor: 'Denise Saraceni',
-      horario: 'novela das 7',
-      musicaAbertura: 'Pétala',
-      artistaMusicaAbertura: 'Djavan'
+    amigos: ['marcos', 'vanessa', 'ricardo', 'gustavo', 'karol', 'pedro'],
+    qtdAmigos: function(){
+        return this.amigos.length
     }
-  ];
-  
-  //Faça uma função que retorne uma lista de atores que aparecem em mais uma novela
-  //Faça uma função que retorne uma lista de novelas de um diretor informado pelo usuário
-  //Faça uma função que retorne uma lista de novelas de um ator informado pelo usuário
-  //Faça uma função que retorne apenas as novelas das 6 e das 7
-  
+}
+
+//Imprima o objeto inteiro no console
+console.log(pessoa)
+
+//Para acessar as propriedades do object, assim como na struct, use o "ponto"
+//console.log(pessoa.nome)
+
+//Para imprimir uma propriedade que não segue o padrão camelCase, use []
+//console.log(pessoa["profissão"])
+
+//Com os colchetes, você também pode criar propriedades que não existem
+//pessoa["endereço"] = "Taguatinga"
+//console.log(pessoa)
+
+//Com os colchetes, você pode acessar uma propriedade "dinâmicamente"
+const propriedade = "idade"
+//console.log(pessoa[propriedade])
+
+//Você também pode criar uma nova propriedade sem usar os colchetes, da seguinte forma:
+pessoa.altura = 1.82
+//console.log(pessoa)
+
+//para apagar uma propriedade do objeto utilize "delete"
+//delete pessoa.altura
+//console.log(pessoa)
+
+//Você também pode invocar as funções incorporadas no objeto
+//console.log(pessoa.qtdAmigos())
+
+//Os objects são estruturas úteis para buscas ou criação de dicionários
+//const inicial = prompt("Informe as iniciais de um estado do Brasil")
+const estados = {
+    AC: "Acre",
+    AL: "Alagoas",
+    AM: "Amazonas",
+    AP: "Amapá",
+    BA: "Bahia",
+    CE: "Ceará",
+    DF: "Distrito Federal",
+    ES: "Espírito Santo",
+    GO: "Goiás",
+    MA: "Maranhão",
+    MG: "Minas Gerais",
+    MS: "Mato Grosso do Sul",
+    MT: "Mato Grosso",
+    PA: "Pará",
+    PB: "Paraíba",
+    PE: "Pernambuco",
+    PI: "Piauí",
+    PR: "Paraná",
+    RJ: "Rio de Janeiro",
+    RN: "Rio Grande do Norte",
+    RO: "Rondônia",
+    RR: "Roraima",
+    RS: "Rio Grande do Sul",
+    SC: "Santa Catarina",
+    SE: "Sergipe",
+    SP: "São Paulo",
+    TO: "Tocantins"
+  };
+
+//console.log(estados[inicial])
 
 </textarea>
 <div id="output-9"></div>

@@ -11,6 +11,7 @@ function createCodeZone(id) {
             "Ctrl-Enter": executeCode,
             "Shift-Enter": () => console.clear(),
             "Alt-Enter": resetCode,
+            "Ctrl-/": "toggleComment"
         }
     });
 
@@ -54,3 +55,4 @@ function createSection(section){
 }
 Object.values(sections).forEach(createSection)
 document.addEventListener("DOMContentLoaded", createZones);
+
