@@ -7,3 +7,4 @@ export { default as s6 } from './s6.js';
 export { default as s7 } from './s7.js';
 export { default as s8 } from './s8.js';
 export { default as s9 } from './s9.js';
+export { default as s10 } from './s10.js';
